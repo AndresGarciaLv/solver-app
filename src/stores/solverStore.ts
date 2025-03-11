@@ -1,3 +1,4 @@
+// solverStore.ts
 import { defineStore } from "pinia";
 
 interface Result {
@@ -7,36 +8,40 @@ interface Result {
 
 interface SolverState {
   equation: string;
-  method: "euler" | "eulerMejorado" | "rk4" | "newton";
   results: Result[];
+  generalSolution: Result[];
+  eulerResults: Result[];
+  eulerMejoradoResults: Result[];
+  rungeKuttaResults: Result[];
 }
 
 export const useSolverStore = defineStore("solver", {
   state: (): SolverState => ({
     equation: "",
-    method: "rk4",
     results: [],
+    generalSolution: [],
+    eulerResults: [],
+    eulerMejoradoResults: [],
+    rungeKuttaResults: [],
   }),
   actions: {
     setEquation(eq: string) {
       this.equation = eq;
-      localStorage.setItem("equation", eq);
     },
-    setMethod(meth: "euler" | "eulerMejorado" | "rk4" | "newton") {
-      this.method = meth;
-      localStorage.setItem("method", meth);
+    setResults(res: Result[]) {
+      this.results = res;
     },
-    setResults(res: Array<Result | number>) {
-      if (this.method === "newton") {
-        // Convertimos los resultados de Newton-Raphson en formato { x, y }
-        this.results = res.map((value, index) => ({
-          x: index,
-          y: typeof value === "number" ? value : 0,
-        }));
-      } else {
-        this.results = res as Result[];
-      }
-      localStorage.setItem("results", JSON.stringify(this.results));
+    setGeneralSolution(res: Result[]) {
+      this.generalSolution = res;
+    },
+    setEulerResults(res: Result[]) {
+      this.eulerResults = res;
+    },
+    setEulerMejoradoResults(res: Result[]) {
+      this.eulerMejoradoResults = res;
+    },
+    setRungeKuttaResults(res: Result[]) {
+      this.rungeKuttaResults = res;
     },
   },
 });

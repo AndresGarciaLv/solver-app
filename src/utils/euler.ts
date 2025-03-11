@@ -7,12 +7,12 @@ export function euler(
 ): Array<{ x: number; y: number }> {
   let x = x0;
   let y = y0;
-  const results = [{ x, y }];
+  const results = [{ x: parseFloat(x.toFixed(6)), y: parseFloat(y.toFixed(6)) }];
 
   for (let i = 0; i < n; i++) {
     y = y + h * f(x, y);
     x = x + h;
-    results.push({ x, y });
+    results.push({ x: parseFloat(x.toFixed(6)), y: parseFloat(y.toFixed(6)) });
   }
 
   return results;

@@ -1,78 +1,42 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView, useRoute, RouterLink } from 'vue-router';
+import { computed } from 'vue';
+
+const route = useRoute();
+const tabs = [
+  { name: 'Inicio', path: '/', routeName: 'home' },
+  { name: 'Sistema de Ecuaciones', path: '/system-equation', routeName: 'system-equation' },
+  { name: 'Proyecto', path: '/project', routeName: 'project' }
+];
+
+const activeTab = computed(() => route.name);
 </script>
 
 <template>
-  <header>
-
-    <div class="wrapper">
-
-    </div>
+  <header class="bg-white shadow-md py-3">
+    <nav class="flex justify-center space-x-6">
+      <RouterLink
+        v-for="tab in tabs"
+        :key="tab.routeName"
+        :to="tab.path"
+        class="relative text-lg font-semibold px-4 py-2 transition duration-200"
+        :class="{ 'text-blue-600': activeTab === tab.routeName }"
+      >
+        {{ tab.name }}
+        <span
+          v-if="activeTab === tab.routeName"
+          class="absolute left-0 bottom-0 w-full h-1 bg-blue-600 rounded-t-md"
+        ></span>
+      </RouterLink>
+    </nav>
   </header>
 
   <RouterView />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
 nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  text-decoration: none;
+  position: relative;
 }
 </style>

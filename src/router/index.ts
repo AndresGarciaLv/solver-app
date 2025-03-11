@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import SystemEcuationView from '@/views/SystemEcuationView.vue'
+import ProjectView from '@/views/ProjectView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +10,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/system-equation',
+      name: 'system-equation',
+      component: SystemEcuationView,
+    },
+    {
+      path: '/project',
+      name: 'project',
+      component: ProjectView,
     },
 
   ],

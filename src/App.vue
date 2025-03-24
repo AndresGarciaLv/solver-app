@@ -4,7 +4,7 @@ import { computed } from 'vue';
 
 const route = useRoute();
 const tabs = [
-  { name: 'Inicio', path: '/', routeName: 'home' },
+  { name: 'EDOS', path: '/', routeName: 'home' },
   { name: 'Sistema de Ecuaciones', path: '/system-equation', routeName: 'system-equation' },
   { name: 'Proyecto', path: '/project', routeName: 'project' }
 ];

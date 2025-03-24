@@ -1,4 +1,3 @@
-// solverStore.ts
 import { defineStore } from "pinia";
 
 interface Result {
@@ -8,31 +7,31 @@ interface Result {
 
 interface SolverState {
   equation: string;
-  results: Result[];
-  generalSolution: Result[];
+  generalSolution: Result[];  // Solución exacta evaluada
   eulerResults: Result[];
   eulerMejoradoResults: Result[];
   rungeKuttaResults: Result[];
+  generalSolutionExpression: string; // Expresión simbólica
 }
 
 export const useSolverStore = defineStore("solver", {
   state: (): SolverState => ({
     equation: "",
-    results: [],
     generalSolution: [],
     eulerResults: [],
     eulerMejoradoResults: [],
     rungeKuttaResults: [],
+    generalSolutionExpression: "",
   }),
   actions: {
     setEquation(eq: string) {
       this.equation = eq;
     },
-    setResults(res: Result[]) {
-      this.results = res;
-    },
     setGeneralSolution(res: Result[]) {
       this.generalSolution = res;
+    },
+    setGeneralSolutionExpression(expression: string) {
+      this.generalSolutionExpression = expression;
     },
     setEulerResults(res: Result[]) {
       this.eulerResults = res;

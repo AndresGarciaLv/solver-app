@@ -71,12 +71,12 @@ const comparisonResults = computed(() => {
             <td class="border border-gray-300 p-2">{{ point.eulerMejoradoZ?.toFixed(4) ?? '-' }}</td>
             <td class="border border-gray-300 p-2">{{ point.rungeKuttaY?.toFixed(4) ?? '-' }}</td>
             <td class="border border-gray-300 p-2">{{ point.rungeKuttaZ?.toFixed(4) ?? '-' }}</td>
-            <td class="border border-gray-300 p-2">{{ point.errorEulerY?.toFixed(2) ?? '-' }}</td>
-            <td class="border border-gray-300 p-2">{{ point.errorEulerZ?.toFixed(2) ?? '-' }}</td>
-            <td class="border border-gray-300 p-2">{{ point.errorEulerMejoradoY?.toFixed(2) ?? '-' }}</td>
-            <td class="border border-gray-300 p-2">{{ point.errorEulerMejoradoZ?.toFixed(2) ?? '-' }}</td>
-            <td class="border border-gray-300 p-2">{{ point.errorRungeKuttaY?.toFixed(2) ?? '-' }}</td>
-            <td class="border border-gray-300 p-2">{{ point.errorRungeKuttaZ?.toFixed(2) ?? '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ point.errorEulerY?.toFixed(10) ?? '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ point.errorEulerZ?.toFixed(10) ?? '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ point.errorEulerMejoradoY?.toFixed(10) ?? '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ point.errorEulerMejoradoZ?.toFixed(10) ?? '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ point.errorRungeKuttaY?.toFixed(10) ?? '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ point.errorRungeKuttaZ?.toFixed(10) ?? '-' }}</td>
           </tr>
         </tbody>
       </table>

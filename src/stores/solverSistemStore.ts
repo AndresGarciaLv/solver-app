@@ -17,6 +17,8 @@ interface SolverState {
   eulerResults: Result[];
   eulerMejoradoResults: Result[];
   rungeKuttaResults: Result[];
+  generalSolutionExpressionY: string;
+  generalSolutionExpressionZ: string;
 }
 
 export const useSolverSistemStore = defineStore("solverSistem", {
@@ -27,6 +29,8 @@ export const useSolverSistemStore = defineStore("solverSistem", {
     eulerResults: [],
     eulerMejoradoResults: [],
     rungeKuttaResults: [],
+    generalSolutionExpressionY: "",
+    generalSolutionExpressionZ: "",
   }),
   actions: {
     setEquations(f1: string, f2: string) {
@@ -46,6 +50,12 @@ export const useSolverSistemStore = defineStore("solverSistem", {
     },
     setRungeKuttaResults(res: Result[]) {
       this.rungeKuttaResults = res;
+    },
+    setGeneralSolutionExpressionY(expr: string) {
+      this.generalSolutionExpressionY = expr;
+    },
+    setGeneralSolutionExpressionZ(expr: string) {
+      this.generalSolutionExpressionZ = expr;
     },
     solveEuler(f1: (x: number, y: number, z: number) => number, f2: (x: number, y: number, z: number) => number, x0: number, y0: number, z0: number, h: number, n: number) {
       this.setEulerResults(eulerSistema(f1, f2, x0, y0, z0, h, n));
